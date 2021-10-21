@@ -110,8 +110,9 @@ class ProductController extends Controller
 
         $product = Product::findorfail($id);
 
-        unlink('images/products/' . $product->image);
-
+        if (is_file('images/products/' . $product->image)) {
+            unlink('images/products/' . $product->image);
+        }
         Product::destroy($id);
 
 

@@ -85,6 +85,7 @@ class ShipmentController extends Controller
         $shipment->load("products");
         //return $shipment;
 
+
         return view('pages.shipment.edit', compact('couriers', 'products', 'shipment'));
     }
 
