@@ -64,4 +64,13 @@
 ##### password : 123456789
 
 
+## API 
 
+### Use any public API (For API call example: https://jsonplaceholder.typicode.com/posts) from back-end and return this API result
+
+##### http://127.0.0.1:8000/api/public-api
+
+
+### API with only API key
+
+##### http://127.0.0.1:8000/api/shipments with API_KEY=AEsXspzMjJE2QjM
