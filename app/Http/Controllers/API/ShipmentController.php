@@ -16,7 +16,7 @@ class ShipmentController extends Controller
     public function index(Request $request)
     {
         $apiKey = $request->header("api-key");
-        if($apiKey != env("API_KEY")) {
+        if($apiKey != env("API_KEY")|| empty($apiKey)) {
             return response()->json([
                 "message" => "Unautherized"
             ], 401);
