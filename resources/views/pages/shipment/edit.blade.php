@@ -46,7 +46,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label> Status : <span class="text-danger">*</span></label>
-                            <select name="status" class="form-control">
+                            <select name="status" class="form-control p-10">
 
                                 <option value="Pending" @if ($shipment->status == 'Pending') selected @endif>Pending</option>
                                 <option value="Picked_By_Courier" @if ($shipment->status == 'Picked_By_Courier') selected @endif>picked by courier</option>
@@ -70,7 +70,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label> Courier : <span class="text-danger">*</span></label>
-                            <select name="courier_id" class="form-control">
+                            <select name="courier_id" class="form-control p-10">
 
                                 <option value="">Select Courier</option>
                                 @foreach ($couriers as $courier)
@@ -85,27 +85,63 @@
                     </div>
 
 
-                    <div class="repeater">
+                    <div class="repeater mb-3">
                         <div data-repeater-list="products">
-                            @foreach ($shipment->products as $shipmentProduct)
+                            @if(count($shipment->products))
+                                @foreach ($shipment->products as $shipmentProduct)
+                                    <div data-repeater-item="">
+                                        <div class=" row mb-30">
+                                            <div class="col-lg-2">
+                                                <input class="form-control" min="1" type="number" name="count"
+                                                    placeholder="count" value="{{ $shipmentProduct->pivot->count }}">
+                                                @if ($errors->has('products.*.count'))
+                                                    <div class="alert alert-danger">
+                                                        {{ $errors->first('products.*.count') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="col-lg-2">
+                                                <select name="product_id" class="form-control p-10">
+
+                                                    <option value="">Select Proudct</option>
+                                                    @foreach ($products as $product)
+                                                        <option value="{{ $product->id }}" @if ($shipmentProduct->pivot->product_id == $product->id) selected @endif>
+                                                            {{ $product->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('products.*.product_id'))
+                                                    <div class="alert alert-danger">
+                                                        {{ $errors->first('products.*.product_id') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="d-grid">
+                                                    <input class="btn btn-danger" data-repeater-delete="" type="button"
+                                                        value="Delete">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @endforeach
+                            @else
                                 <div data-repeater-item="">
                                     <div class=" row mb-30">
                                         <div class="col-lg-2">
-                                            <input class="form-control" min="1" type="number" name="count"
-                                                placeholder="count" value="{{ $shipmentProduct->pivot->count }}">
+                                            <input class="form-control" type="number" name="count" placeholder="count"
+                                                min="1">
                                             @if ($errors->has('products.*.count'))
-                                                <div class="alert alert-danger">
-                                                    {{ $errors->first('products.*.count') }}</div>
+                                                <div class="alert alert-danger">{{ $errors->first('products.*.count') }}
+                                                </div>
                                             @endif
                                         </div>
 
                                         <div class="col-lg-2">
-                                            <select name="product_id" class="form-control">
+                                            <select name="product_id" class="form-control p-10">
 
                                                 <option value="">Select Proudct</option>
                                                 @foreach ($products as $product)
-                                                    <option value="{{ $product->id }}" @if ($shipmentProduct->pivot->product_id == $product->id) selected @endif>
-                                                        {{ $product->name }}</option>
+                                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
                                                 @endforeach
                                             </select>
                                             @if ($errors->has('products.*.product_id'))
@@ -121,17 +157,16 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            @endforeach
+                            @endif
 
                         </div>
                         <div class="row mt-20">
                             <div class="col-12">
-                                <input class="button" data-repeater-create="" type="button" value="Add new">
+                                <input class="button p-2" data-repeater-create="" type="button" value="Add new">
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">update</button>
+                    <button class="btn btn-success nextBtn btn-lg pull-right" type="submit">update</button>
                 </form>
 
             </div>

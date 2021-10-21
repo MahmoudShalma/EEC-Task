@@ -55,7 +55,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label> Courier : <span class="text-danger">*</span></label>
-                            <select name="courier_id" class="form-control">
+                            <select name="courier_id" class="form-control p-10">
 
                                 <option value="">Select Courier</option>
                                 @foreach ($couriers as $courier)
@@ -69,7 +69,7 @@
                     </div>
 
 
-                    <div class="repeater">
+                    <div class="repeater mb-3">
                         <div data-repeater-list="products">
                             <div data-repeater-item="">
                                 <div class=" row mb-30">
@@ -83,7 +83,7 @@
                                     </div>
 
                                     <div class="col-lg-2">
-                                        <select name="product_id" class="form-control">
+                                        <select name="product_id" class="form-control p-10">
 
                                             <option value="">Select Proudct</option>
                                             @foreach ($products as $product)
@@ -106,13 +106,13 @@
 
                         </div>
                         <div class="row mt-20">
-                            <div class="col-12">
-                                <input class="button" data-repeater-create="" type="button" value="Add new">
+                            <div class="col-12 ">
+                                <input class="button p-2" data-repeater-create="" type="button" value="Add new">
                             </div>
                         </div>
                     </div>
 
-                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Submit</button>
+                    <button class="btn btn-success nextBtn btn-lg pull-right" type="submit">Submit</button>
                 </form>
 
             </div>

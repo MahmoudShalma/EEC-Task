@@ -50,7 +50,8 @@
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td>{{ $shipment->shipment_number }}</td>
-                                                <td>{{ $shipment->courier->name }}</td>
+
+                                                <td>{{ ($shipment->courier) ? $shipment->courier->name : "#" }}</td>
                                                 <td>{{ $shipment->status }}</td>
 
                                                 <td>
