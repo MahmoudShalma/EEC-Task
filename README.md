@@ -56,7 +56,7 @@
 ### 12. Run the server
 
 
-##### go to http://127.0.0.1:8000/home if you are not an admin or go to http://127.0.0.1:8000/dashboard if you are an admin 
+##### go to http://127.0.0.1:8000 if you are not an admin or go to http://127.0.0.1:8000/dashboard if you are an admin 
 
 ### 13. For login
 
